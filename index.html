@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>May | Research Fellow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --granite:    #2c2d30;
+      --fern:       #3d6b4f;
+      --lichen:     #7aab8a;
+      --atlantic:   #4a7fa5;
+      --heather:    #8c6b8a;
+      --pale-moor:  #e4e8e0;
+      --parchment:  #f5f3ee;
+      --text:       #1e2320;
+      --light-text: #5a6b5e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--parchment);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    #header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 300px;
+      height: 100vh;
+      background: var(--granite);
+      padding: 2.5rem 2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      z-index: 100;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 0.5rem;
+    }
+
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(var(--lichen), var(--atlantic), var(--granite), var(--fern));
+      animation: spin 8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .avatar-wrap img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--granite);
+      display: block;
+      background: var(--fern);
+    }
+
+    /* placeholder circle if no image */
+    .avatar-placeholder {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--fern), var(--lichen));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.05em;
+    }
+
+    #header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: white;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    #header h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--lichen);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.3rem;
+    }
+
+    .contact-block p {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--pale-moor);
+      line-height: 1.8;
+      opacity: 0.75;
+    }
+
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .social-icons a {
+      color: var(--pale-moor);
+      opacity: 0.6;
+      text-decoration: none;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .social-icons a:hover { opacity: 1; color: var(--lichen); }
+
+    /* ── MAIN CONTENT ── */
+    #main {
+      margin-left: 300px;
+      flex: 1;
+      padding: 4rem 5rem;
+      max-width: calc(100% - 300px);
+    }
+
+    section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+    section:nth-child(6) { animation-delay: 0.6s; }
+    section:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--granite);
+      border-bottom: 1px solid var(--pale-moor);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.4rem;
+      position: relative;
+    }
+
+    section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 3rem;
+      height: 2px;
+      background: var(--fern);
+    }
+
+    section p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text);
+      max-width: 72ch;
+    }
+
+    section p + p { margin-top: 0.8rem; }
+
+    a { color: var(--atlantic); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--heather); }
+
+    /* ── POSITIONS TIMELINE ── */
+    .timeline { margin-top: 0.5rem; }
+
+    .timeline-group { margin-bottom: 1.8rem; }
+
+    .timeline-group-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--light-text);
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.3rem 1rem;
+      padding: 0.8rem 1rem 0.8rem 1.2rem;
+      border-left: 2px solid var(--pale-moor);
+      margin-bottom: 0.5rem;
+      background: white;
+      border-radius: 0 6px 6px 0;
+      transition: border-color 0.2s;
+    }
+
+    .timeline-item:hover { border-left-color: var(--fern); }
+
+    .timeline-item .role {
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .timeline-item .org {
+      font-size: 0.82rem;
+      color: var(--light-text);
+      margin-top: 0.15rem;
+    }
+
+    .timeline-item .date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--light-text);
+      text-align: right;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    /* ── EDUCATION ── */
+    .degrees { list-style: none; }
+
+    .degree-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 0.6rem;
+      align-items: flex-start;
+      transition: box-shadow 0.2s;
+    }
+
+    .degree-item:hover { box-shadow: 0 2px 12px rgba(61,107,79,0.12); }
+
+    .degree-badge {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fern);
+      min-width: 3rem;
+      text-align: center;
+      padding-top: 0.1rem;
+    }
+
+    .degree-info .degree-title {
+      font-weight: 400;
+      font-size: 0.95rem;
+    }
+
+    .degree-info .degree-inst {
+      font-size: 0.82rem;
+      color: var(--light-text);
+      margin-top: 0.1rem;
+    }
+
+    .degree-info .degree-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--light-text);
+      margin-top: 0.2rem;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item {
+      padding: 1.1rem 1.2rem;
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 0.8rem;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .pub-item:hover {
+      border-left-color: var(--fern);
+      box-shadow: 0 2px 16px rgba(61,107,79,0.1);
+    }
+
+    .pub-item .pub-title {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .pub-item .pub-venue {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--light-text);
+      margin-top: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    .pub-item .pub-links {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .pub-item .pub-links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--atlantic);
+      border: 1px solid var(--pale-moor);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .pub-item .pub-links a:hover {
+      background: var(--atlantic);
+      color: white;
+      border-color: var(--atlantic);
+    }
+
+    /* ── TAGS / FIELDS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.7rem;
+      background: var(--pale-moor);
+      color: var(--granite);
+      border-radius: 2px;
+    }
+
+    .tag.sdg {
+      background: var(--granite);
+      color: var(--lichen);
+    }
+
+    /* ── AWARDS ── */
+    #awards ul { list-style: none; }
+
+    #awards li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--pale-moor);
+      align-items: baseline;
+      font-size: 0.92rem;
+    }
+
+    #awards li em {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--fern);
+      font-style: normal;
+      min-width: 2.5rem;
+    }
+
+    /* ── SERVICES ── */
+    #services h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--light-text);
+      margin: 1rem 0 0.5rem;
+    }
+
+    #services ul { list-style: none; }
+
+    #services li {
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+      color: var(--text);
+    }
+
+    /* ── HOBBIES ── */
+    #hobbies ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    #hobbies li {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--pale-moor);
+      border-radius: 2px;
+      color: var(--light-text);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--pale-moor);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--light-text);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+      }
+      #main {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 2rem 1.5rem;
+      }
+      body { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<header id="header">
+  <div>
+    <div class="avatar-wrap">
+      <!-- Replace src with your actual photo path, e.g. images/profile.jpg -->
+      <img src="images/profile.jpg" alt="May" />
+    </div>
+    <h1>May</h1>
+    <h4>Research Fellow</h4>
+  </div>
+
+  <div class="contact-block">
+    <p>University of Exeter<br>
+       Exeter, United Kingdom<br><br>
+       <!-- replace with your email -->
+       m.[lastname][AT]exeter.ac.uk
+    </p>
+  </div>
+<div class="news-item">
+      <em>[2025]</em>
+      <span>Outreach at Planet Ocean Super Saturday — The Box, Plymouth</span>
+    </div>
+    <div class="news-item">
+      <em>[2024]</em>
+      <span>Atlantis Project stand at Royal Society Summer Science Fair, London</span>
+    </div>
+    <div class="news-item">
+      <em>[2024]</em>
+      <span>Article published in The Conversation UK on green infrastructure and sewers</span>
+    </div>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://github.com/" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <a href="https://scholar.google.com/" target="_blank">Scholar</a>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<div id="main">
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h3>About Me</h3>
+    <p>I am a Research Fellow at the <a href="https://www.exeter.ac.uk/" target="_blank">University of Exeter</a> specialising in AI and data science for environmental &amp; health applications. I am affiliated with the <a href="https://www.exeter.ac.uk/research/centres/environmental-intelligence/" target="_blank">Centre for Environmental Intelligence</a>.</p>
+    <p>I have a multidisciplinary background in water systems, spanning hydrological modelling, water quality assessment, marine applications, and climate resilience. My doctoral research at the <a href="https://quexinstitute.com/" target="_blank">QUEX Institute</a> (University of Exeter &amp; University of Queensland) used numerical modelling and machine learning to assess climate resilience in water systems. As a postdoctoral researcher at <a href="https://www.eawag.ch/" target="_blank">Eawag</a> (ETH Domain), I applied deep learning to forecast sewage spills, while also serving as scientific assistant to the Directorate. At <a href="https://www.pml.ac.uk/" target="_blank">PML</a>, my work focused on remote sensing and machine learning for marine applications, contributing to ESA SCOPE, ESA TIME, and the Simons Foundation CBIOMES projects.</p>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section id="interests">
+    <h3>Research Interests</h3>
+    <p>My research sits at the intersection of <strong>environmental intelligence</strong>, <strong>machine learning</strong>, and <strong>data science</strong>, applied to water systems, marine environments, and climate adaptation.</p>
+    <div class="tags" style="margin-top:1rem">
+      <span class="tag">Climate change impacts &amp; adaptation</span>
+      <span class="tag">Artificial intelligence</span>
+      <span class="tag">Data engineering &amp; science</span>
+      <span class="tag">Geospatial information systems</span>
+      <span class="tag">Urban hydrology</span>
+      <span class="tag">Hydrodynamics &amp; hydraulic engineering</span>
+      <span class="tag sdg">SDG 6 — Clean Water</span>
+      <span class="tag sdg">SDG 11 — Sustainable Cities</span>
+      <span class="tag sdg">SDG 13 — Climate Action</span>
+    </div>
+  </section>
+
+  <!-- POSITIONS -->
+  <section id="positions">
+    <h3>Positions</h3>
+    <div class="timeline">
+
+      <div class="timeline-group">
+        <div class="timeline-group-label">University of Exeter</div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Research Fellow</div>
+            <div class="org">University of Exeter — Exeter, United Kingdom</div>
+          </div>
+          <div class="date">Oct 2025 –&nbsp;present</div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Doctoral Researcher</div>
+            <div class="org">QUEX Institute — Australia &amp; United Kingdom</div>
+          </div>
+          <div class="date">Jan 2019 – Oct 2022</div>
+        </div>
+      </div>
+
+      <div class="timeline-group">
+        <div class="timeline-group-label">Academic Positions</div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Earth Observation Scientist</div>
+            <div class="org">Plymouth Marine Laboratory — Plymouth, United Kingdom</div>
+          </div>
+          <div class="date">Feb 2024 – Oct 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Post-Doctoral Researcher</div>
+            <div class="org">Eawag (ETH Domain) — Dübendorf, Switzerland</div>
+          </div>
+          <div class="date">Sep 2022 – Oct 2023</div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Scientific Assistant to the Directorate</div>
+            <div class="org">Eawag (ETH Domain) — Dübendorf, Switzerland</div>
+          </div>
+          <div class="date">Mar 2023 – Oct 2023</div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Research Assistant</div>
+            <div class="org">Universidad de la República — Montevideo, Uruguay</div>
+          </div>
+          <div class="date">May 2013 – Sep 2015</div>
+        </div>
+      </div>
+
+      <div class="timeline-group">
+        <div class="timeline-group-label">Industry</div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Water Engineer</div>
+            <div class="org">Arup Group — Bristol, United Kingdom</div>
+          </div>
+          <div class="date">Oct 2023 – Feb 2024</div>
+        </div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Plant Engineer</div>
+            <div class="org">Montes del Plata — Uruguay</div>
+          </div>
+          <div class="date">Sep 2015 – Sep 2017</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h3>Education</h3>
+    <ul class="degrees">
+      <li class="degree-item">
+        <div class="degree-badge">PhD</div>
+        <div class="degree-info">
+          <div class="degree-title">Engineering</div>
+          <div class="degree-inst">QUEX Institute — University of Exeter &amp; University of Queensland</div>
+          <div class="degree-date">Jan 2019 – Oct 2022</div>
+        </div>
+      </li>
+      <li class="degree-item">
+        <div class="degree-badge">MSc</div>
+        <div class="degree-info">
+          <div class="degree-title">Water Engineering with Management</div>
+          <div class="degree-inst">University of Exeter — Exeter, United Kingdom</div>
+          <div class="degree-date">2017 – 2018</div>
+        </div>
+      </li>
+      <li class="degree-item">
+        <div class="degree-badge">BSc</div>
+        <div class="degree-info">
+          <div class="degree-title">Chemical Engineering</div>
+          <div class="degree-inst">Universidad de la República — Montevideo, Uruguay</div>
+          <div class="degree-date">2010 – 2015</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SELECTED PUBLICATIONS -->
+  <section id="publications">
+    <h3>Selected Publications</h3>
+    <p style="font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--light-text); margin-bottom:1.2rem; letter-spacing:0.04em;">11 peer-reviewed publications · 1 pre-print · 221 citations · h-index 9</p>
+
+    <div class="pub-item">
+      <div class="pub-title">Rodriguez, Cavadini and Cook — Do baseline assumptions alter the efficacy of green stormwater infrastructure to reduce combined sewer overflows?</div>
+      <div class="pub-venue">Water Research, 253, 121284 · 2024</div>
+      <div class="pub-links"><a href="https://doi.org/10.1016/J.WATRES.2024.121284" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Rodriguez et al. — The effect of green infrastructure on resilience performance in combined sewer systems under climate change</div>
+      <div class="pub-venue">Journal of Environmental Management, 353, 120229 · 2024</div>
+      <div class="pub-links"><a href="https://doi.org/10.1016/J.JENVMAN.2024.120229" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Cavadini, Rodriguez et al. — Can blue–green infrastructure counteract the effects of climate change on combined sewer overflows? Study of a Swiss catchment</div>
+      <div class="pub-venue">Environmental Research Letters, 19(9), 094025 · 2024</div>
+      <div class="pub-links"><a href="https://doi.org/10.1088/1748-9326/AD6462" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Rodriguez et al. — Global resilience analysis of combined sewer systems under continuous hydrologic simulation</div>
+      <div class="pub-venue">Journal of Environmental Management, 344, 118607 · 2023</div>
+      <div class="pub-links"><a href="https://doi.org/10.1016/j.jenvman.2023.118607" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Rodriguez et al. — Exploring the spatial impact of green infrastructure on urban drainage resilience</div>
+      <div class="pub-venue">Water, 13(13), 1789 · 2020</div>
+      <div class="pub-links"><a href="https://doi.org/10.3390/w13131789" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Rodriguez et al. — A study of the Resilience Analysis Grid method and its applicability to the water sector in England and Wales</div>
+      <div class="pub-venue">Water and Environment Journal, 34(4), 623–633 · 2019</div>
+      <div class="pub-links"><a href="https://doi.org/10.1111/wej.12539" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Rodriguez — Climate change could overwhelm our sewers – here's how green infrastructure could help</div>
+      <div class="pub-venue">The Conversation UK · 2024</div>
+      <div class="pub-links"><a href="https://theconversation.com" target="_blank">Article</a></div>
+    </div>
+
+    <p style="margin-top:1.2rem">
+      <a href="https://scholar.google.com/" target="_blank" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--light-text)">Full list on Google Scholar →</a>
+    </p>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <h3>Teaching</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div><div class="role">Urban Water Management Course</div><div class="org">MSc Sustainable Engineering, ETH Zürich — hydrological-hydraulic modelling lab support</div></div>
+        <div class="date">2022 – 2023</div>
+      </div>
+      <div class="timeline-item">
+        <div><div class="role">Postgraduate Teaching Assistant</div><div class="org">University of Exeter — MATLAB practical courses; LTHE Level 1</div></div>
+        <div class="date">Jan – Feb 2020</div>
+      </div>
+      <div class="timeline-item">
+        <div><div class="role">Materials Engineering Lecturer &amp; Practical Tutor</div><div class="org">Into, University of Exeter — International Year One (Engineering)</div></div>
+        <div class="date">Sep – Dec 2019</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <h3>Awards &amp; Honours</h3>
+    <ul>
+      <li><em>2023</em> Best Poster Award — Novatech Urban Water, Lyon, France</li>
+      <li><em>2022</em> Best Oral Presentation — IWA YWP Conference, Wales</li>
+      <li><em>2020</em> Best Oral Presentation — 2nd Year PhD Conference, University of Exeter</li>
+      <li><em>2019–21</em> QUEX Institute Doctoral Studentship — University of Exeter</li>
+      <li><em>2018</em> Dean's Commendation for Exceptional Performance — University of Exeter</li>
+      <li><em>2018</em> MSc Award for Best Engineering Project — University of Exeter</li>
+      <li><em>2017</em> Pro-Chancellor Scholarship — University of Exeter</li>
+    </ul>
+  </section>
+
+  <!-- ACADEMIC SERVICE -->
+  <section id="services">
+    <h3>Outreach &amp; Service</h3>
+    <h4>Outreach</h4>
+    <ul>
+      <li>Planet Ocean Super Saturday — The Box, Plymouth Marine Laboratory (2025)</li>
+      <li>Atlantis Project Stand — Royal Society Summer Science Fair, London (2024)</li>
+      <li>Organising member, Women in Climate — University of Exeter (2019–2021)</li>
+      <li>STEM Ambassador, Engineers Without Borders — University of Exeter (2017–2018)</li>
+    </ul>
+    <h4>Community</h4>
+    <ul>
+      <li>Reading Group Organiser — Centre for Water Systems, University of Exeter</li>
+      <li>Weekly Seminar Organiser — Urban Water Management Dept., Eawag</li>
+      <li>12+ oral presentations at international conferences; 7 poster presentations</li>
+    </ul>
+    <h4>Languages</h4>
+    <ul>
+      <li>English — Bilingual</li>
+      <li>Spanish — Native</li>
+      <li>French — B2</li>
+      <li>German — A1</li>
+    </ul>
+    <h4>Technical Skills</h4>
+    <div class="tags" style="margin-top:0.4rem">
+      <span class="tag">Python</span>
+      <span class="tag">MATLAB</span>
+      <span class="tag">PyTorch</span>
+      <span class="tag">Scikit-learn</span>
+      <span class="tag">Xarray · Pandas · NumPy</span>
+      <span class="tag">GeoPandas · Rasterio</span>
+      <span class="tag">QGIS · ArcGIS</span>
+      <span class="tag">Git</span>
+      <span class="tag">SLURM / HPC</span>
+      <span class="tag">InfoWorks · SWMM</span>
+      <span class="tag">Linux · Mac · Windows</span>
+    </div>
+  </section>
+
+  <!-- BEYOND RESEARCH -->
+  <section id="hobbies">
+    <h3>Beyond Research</h3>
+    <p>When not at my desk, I'm usually outside in the South West. I run on <strong>Dartmoor</strong> — the granite tors, boggy paths, and grey weather suit me. I'm also working through the <strong>South West Coast Path</strong>, section by section; 630 miles of clifftop, cove, and estuary is a good way to see the places I study at sea level.</p>
+  </section>
+
+  <footer>
+    <script type="text/javascript">document.write("Last Modified: " + document.lastModified)</script>
+  </footer>
+
+</div>
+</body>
+</html>
