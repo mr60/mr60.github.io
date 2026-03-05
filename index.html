@@ -74,6 +74,7 @@
       background: var(--fern);
     }
 
+    /* placeholder circle if no image */
     .avatar-placeholder {
       position: relative;
       width: 100%;
@@ -137,6 +138,7 @@
 
     .social-icons a:hover { opacity: 1; color: var(--lichen); }
 
+    
     /* ── MAIN CONTENT ── */
     #main {
       margin-left: 300px;
@@ -454,30 +456,27 @@
 <header id="header">
   <div>
     <div class="avatar-wrap">
+      <!-- Replace src with your actual photo path, e.g. images/profile.jpg -->
       <img src="images/profile.jpg" alt="May" />
     </div>
-    <h1>May Rodriguez</h1>
+    <h1>May</h1>
     <h4>Research Fellow</h4>
   </div>
 
   <div class="contact-block">
     <p>University of Exeter<br>
        Exeter, United Kingdom<br><br>
-       m.[lastname]3[AT]exeter.ac.uk
+       <!-- replace with your email -->
+       m.[lastname][AT]exeter.ac.uk
     </p>
   </div>
 
-
-  <div class="globe-widget" style="text-align:center;">
-    <p style="font-family:'Space Mono',monospace; font-size:0.55rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--lichen); opacity:0.7; margin-bottom:0.4rem;">Visitors</p>
-    
-    <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=AE3I12h5b242EjdHWOTnwkGogeQTggTxS5WSjGf7y1Y"></script>
-  </div>
+  <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=AE3I12h5b242EjdHWOTnwkGogeQTggTxS5WSjGf7y1Y"></script>
 
   <div class="social-icons">
-    <a href="https://github.com/mr60" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/mayrodben/" target="_blank">LinkedIn</a>
-    <a href="https://scholar.google.com/citations?user=94H25SIAAAAJ&hl=en" target="_blank">Scholar</a>
+    <a href="https://github.com/" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+    <a href="https://scholar.google.com/" target="_blank">Scholar</a>
   </div>
 </header>
 
@@ -487,8 +486,8 @@
   <!-- ABOUT -->
   <section id="about">
     <h3>About Me</h3>
-    <p>I am a Research Fellow at the <a href="https://experts.exeter.ac.uk/34776-mayra-rodriguez" target="_blank">University of Exeter</a> specialising in AI and data science for environmental &amp; health applications. I am affiliated with <a href="https://netpositivecentre.com/" target="_blank">Net Positive Health and Climate Solutions Centre</a> and <a href="https://www.exeter.ac.uk/research/centres/environmental-intelligence/" target="_blank">Centre for Environmental Intelligence</a>.</p>
-    <p>I have a multidisciplinary background in water systems, spanning hydrological modelling, water quality assessment, marine applications, and climate resilience. My doctoral research at the <a href="https://uq-exeter.institute/" target="_blank">QUEX Institute</a> (University of Exeter &amp; University of Queensland) used numerical modelling and machine learning to assess climate resilience in water systems. As a postdoctoral researcher at <a href="https://www.eawag.ch/" target="_blank">Eawag</a> (ETH Domain), I applied deep learning to forecast sewage spills, while also serving as scientific assistant to the Directorate. At <a href="https://www.pml.ac.uk/" target="_blank">PML</a>, my work focused on remote sensing and machine learning for marine applications, contributing to ESA SCOPE, ESA TIME, and the Simons Foundation CBIOMES projects.</p>
+    <p>I am a Research Fellow at the <a href="https://www.exeter.ac.uk/" target="_blank">University of Exeter</a> specialising in AI and data science for environmental &amp; health applications. I am affiliated with the <a href="https://www.exeter.ac.uk/research/centres/environmental-intelligence/" target="_blank">Centre for Environmental Intelligence</a>.</p>
+    <p>I have a multidisciplinary background in water systems, spanning hydrological modelling, water quality assessment, marine applications, and climate resilience. My doctoral research at the <a href="https://quexinstitute.com/" target="_blank">QUEX Institute</a> (University of Exeter &amp; University of Queensland) used numerical modelling and machine learning to assess climate resilience in water systems. As a postdoctoral researcher at <a href="https://www.eawag.ch/" target="_blank">Eawag</a> (ETH Domain), I applied deep learning to forecast sewage spills, while also serving as scientific assistant to the Directorate. At <a href="https://www.pml.ac.uk/" target="_blank">PML</a>, my work focused on remote sensing and machine learning for marine applications, contributing to ESA SCOPE, ESA TIME, and the Simons Foundation CBIOMES projects.</p>
   </section>
 
   <!-- RESEARCH INTERESTS -->
@@ -512,8 +511,9 @@
   <section id="positions">
     <h3>Positions</h3>
     <div class="timeline">
+
       <div class="timeline-group">
-        <div class="timeline-group-label">Academic Positions</div>
+        <div class="timeline-group-label">University of Exeter</div>
         <div class="timeline-item">
           <div>
             <div class="role">Research Fellow</div>
@@ -521,6 +521,17 @@
           </div>
           <div class="date">Oct 2025 –&nbsp;present</div>
         </div>
+        <div class="timeline-item">
+          <div>
+            <div class="role">Doctoral Researcher</div>
+            <div class="org">QUEX Institute — Australia &amp; United Kingdom</div>
+          </div>
+          <div class="date">Jan 2019 – Oct 2022</div>
+        </div>
+      </div>
+
+      <div class="timeline-group">
+        <div class="timeline-group-label">Academic Positions</div>
         <div class="timeline-item">
           <div>
             <div class="role">Earth Observation Scientist</div>
@@ -541,13 +552,6 @@
             <div class="org">Eawag (ETH Domain) — Dübendorf, Switzerland</div>
           </div>
           <div class="date">Mar 2023 – Oct 2023</div>
-        </div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Doctoral Researcher</div>
-            <div class="org">QUEX Institute — Australia &amp; United Kingdom</div>
-          </div>
-          <div class="date">Jan 2019 – Oct 2022</div>
         </div>
         <div class="timeline-item">
           <div>
@@ -575,6 +579,7 @@
           <div class="date">Sep 2015 – Sep 2017</div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -627,6 +632,12 @@
     </div>
 
     <div class="pub-item">
+      <div class="pub-title">Cavadini, Rodriguez et al. — Can blue–green infrastructure counteract the effects of climate change on combined sewer overflows? Study of a Swiss catchment</div>
+      <div class="pub-venue">Environmental Research Letters, 19(9), 094025 · 2024</div>
+      <div class="pub-links"><a href="https://doi.org/10.1088/1748-9326/AD6462" target="_blank">DOI</a></div>
+    </div>
+
+    <div class="pub-item">
       <div class="pub-title">Rodriguez et al. — Global resilience analysis of combined sewer systems under continuous hydrologic simulation</div>
       <div class="pub-venue">Journal of Environmental Management, 344, 118607 · 2023</div>
       <div class="pub-links"><a href="https://doi.org/10.1016/j.jenvman.2023.118607" target="_blank">DOI</a></div>
@@ -647,11 +658,11 @@
     <div class="pub-item">
       <div class="pub-title">Rodriguez — Climate change could overwhelm our sewers – here's how green infrastructure could help</div>
       <div class="pub-venue">The Conversation UK · 2024</div>
-      <div class="pub-links"><a href="https://theconversation.com/climate-change-could-overwhelm-our-sewers-heres-how-green-infrastructure-could-help-244460" target="_blank">Article</a></div>
+      <div class="pub-links"><a href="https://theconversation.com" target="_blank">Article</a></div>
     </div>
 
     <p style="margin-top:1.2rem">
-      <a href="https://scholar.google.com/citations?user=94H25SIAAAAJ&hl=en" target="_blank" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--light-text)">Full list on Google Scholar →</a>
+      <a href="https://scholar.google.com/" target="_blank" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--light-text)">Full list on Google Scholar →</a>
     </p>
   </section>
 
@@ -730,7 +741,7 @@
   <!-- BEYOND RESEARCH -->
   <section id="hobbies">
     <h3>Beyond Research</h3>
-    <p>When not at my desk, I'm usually outside in the South West. I run on <strong>Dartmoor</strong> — the tors and boggy paths suit me. I'm also working through the <strong>South West Coast Path</strong>, section by section (200+ miles done :) ; 630 miles of clifftop, cove, and estuary is a good way to see the places I study at sea level.</p>
+    <p>When not at my desk, I'm usually outside in the South West. I run on <strong>Dartmoor</strong> — the granite tors, boggy paths, and grey weather suit me. I'm also working through the <strong>South West Coast Path</strong>, section by section; 630 miles of clifftop, cove, and estuary is a good way to see the places I study at sea level.</p>
   </section>
 
   <footer>
