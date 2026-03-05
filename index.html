@@ -74,7 +74,6 @@
       background: var(--fern);
     }
 
-    /* placeholder circle if no image */
     .avatar-placeholder {
       position: relative;
       width: 100%;
@@ -118,11 +117,9 @@
       opacity: 0.75;
     }
 
-
     .social-icons {
       display: flex;
       gap: 1rem;
-      margin-top: auto;
     }
 
     .social-icons a {
@@ -138,7 +135,41 @@
 
     .social-icons a:hover { opacity: 1; color: var(--lichen); }
 
-    
+    /* ── VISITORS BLOCK ── */
+    .visitors-block {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .visitors-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--lichen);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .visitors-label::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--lichen);
+      opacity: 0.5;
+    }
+
+    .clustrmap-wrap {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
     /* ── MAIN CONTENT ── */
     #main {
       margin-left: 300px;
@@ -447,6 +478,7 @@
         padding: 2rem 1.5rem;
       }
       body { flex-direction: column; }
+      .visitors-block { margin-top: 1rem; }
     }
   </style>
 </head>
@@ -456,7 +488,6 @@
 <header id="header">
   <div>
     <div class="avatar-wrap">
-      <!-- Replace src with your actual photo path, e.g. images/profile.jpg -->
       <img src="images/profile.jpg" alt="May" />
     </div>
     <h1>May</h1>
@@ -466,18 +497,26 @@
   <div class="contact-block">
     <p>University of Exeter<br>
        Exeter, United Kingdom<br><br>
-       <!-- replace with your email -->
        m.[lastname][AT]exeter.ac.uk
     </p>
   </div>
-
-  <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=Qx7xuVOQ-39LSBiC6U2br48REKa9WLnfoRgtPmRTgGY"></script>
 
   <div class="social-icons">
     <a href="https://github.com/" target="_blank">GitHub</a>
     <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
     <a href="https://scholar.google.com/" target="_blank">Scholar</a>
   </div>
+
+  <!-- ── VISITORS ── -->
+  <div class="visitors-block">
+    <div class="visitors-label">Visitors</div>
+    <div class="clustrmap-wrap">
+      <script type="text/javascript" id="clstr_globe"
+        src="//clustrmaps.com/globe.js?d=Qx7xuVOQ-39LSBiC6U2br48REKa9WLnfoRgtPmRTgGY">
+      </script>
+    </div>
+  </div>
+
 </header>
 
 <!-- ── MAIN ── -->
