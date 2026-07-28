@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>South West Coast Path | May Rodriguez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<header id="header">
+  <div>
+    <div class="avatar-wrap">
+      <img src="images/profile.jpg" alt="May" />
+    </div>
+    <h1>May Rodriguez</h1>
+    <h4>Research Fellow</h4>
+  </div>
+
+  <div class="contact-block">
+    <p>University of Exeter<br>
+       Exeter, United Kingdom<br><br>
+       m.[lastname]3[AT]exeter.ac.uk
+    </p>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://github.com/mr60" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/mayrodben/" target="_blank">LinkedIn</a>
+    <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Scholar</a>
+  </div>
+
+  <nav class="site-nav">
+    <a href="index.html">Research</a>
+    <a href="walking.html" aria-current="page">Coast Path</a>
+  </nav>
+
+  <div class="visitors-block">
+    <div class="visitors-label">Visitors</div>
+    <div class="clustrmap-wrap">
+      <script type="text/javascript" id="mapmyvisitors"
+        src="https://mapmyvisitors.com/map.js?cl=8aa398&w=236&t=tt&d=pRpqQFE3fOqpQyHuy8UEEP8n7arl4tWLVAlKnhYx2kc&co=2c2d30&cmo=8c6b8a&cmn=4a7fa5&ct=e4e8e0">
+      </script>
+    </div>
+    <p class="visitors-note" id="visitors-blocked" hidden>
+      Hidden by your browser's tracker blocker — nothing is broken.
+    </p>
+  </div>
+
+  <script>
+    addEventListener('load', function () {
+      setTimeout(function () {
+        if (!document.getElementById('mapmyvisitors-widget')) {
+          document.getElementById('visitors-blocked').hidden = false;
+        }
+      }, 2500);
+    });
+  </script>
+
+</header>
+
+<!-- ── MAIN ── -->
+<div id="main">
+
+  <!-- PROGRESS -->
+  <section id="progress">
+    <h3>South West Coast Path</h3>
+    <p>England's longest National Trail runs 630 miles from Minehead in Somerset, around
+       the whole peninsula, to South Haven Point on Poole Harbour. I'm walking it in
+       day-sized pieces, out of order, filling in the gaps as I go.</p>
+
+    <div class="trail-hero" style="margin-top:1.8rem">
+      <span class="hero-number" id="hero-miles">—</span>
+      <span class="hero-unit">miles walked</span>
+    </div>
+    <p class="trail-hero-sub" id="hero-sub">of 630</p>
+
+    <div class="stat-row">
+      <div class="stat-tile" style="border-left-color:var(--walked)">
+        <div class="stat-value" id="stat-pct">—</div>
+        <div class="stat-label">of the trail</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-stages">—</div>
+        <div class="stat-label">of 44 stages</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-run">—</div>
+        <div class="stat-label">longest unbroken run</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-ascent">—</div>
+        <div class="stat-label">metres climbed</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value" id="stat-left">—</div>
+        <div class="stat-label">miles to go</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="trail-map">
+    <h3>The Map</h3>
+    <div id="map" role="img"
+         aria-label="Map of the South West Coast Path with walked sections in green and unwalked sections dashed in grey. The same information is listed as text under 'Stage by stage' below."></div>
+    <div class="map-legend">
+      <span><i class="legend-swatch walked"></i> Walked</span>
+      <span><i class="legend-swatch partial"></i> Part walked</span>
+      <span><i class="legend-swatch not-yet"></i> Not yet</span>
+      <span><i class="legend-swatch optional"></i> Optional (Portland)</span>
+    </div>
+    <p class="map-hint">Hover a stage for its name, distance and ascent. Click to cycle it
+       between not walked, walked and part walked — your changes are saved in this browser
+       only, until you export them below.</p>
+  </section>
+
+  <!-- BY REGION -->
+  <section id="by-region">
+    <h3>By Region</h3>
+    <div id="region-meters"></div>
+  </section>
+
+  <!-- STAGE LIST -->
+  <section id="stages">
+    <h3>Stage by Stage</h3>
+    <div class="editor-bar">
+      <button type="button" class="btn primary" id="btn-copy">Copy progress for the file</button>
+      <button type="button" class="btn" id="btn-reset">Discard my ticks</button>
+      <span class="editor-status" id="editor-status"></span>
+    </div>
+    <textarea class="code-out" id="code-out" rows="4" readonly hidden
+              aria-label="Progress line to paste into walking.html"></textarea>
+    <div id="stage-groups"></div>
+  </section>
+
+  <footer>
+    Stages, ascent and walking times from <em>Walking the South West Coast Path</em>
+    (Cicerone, 3rd ed., Paddy Dillon). Route geometry from the official SWCP GPX,
+    simplified to 25&nbsp;m; distances are measured off that track, so they run a little
+    over the guidebook's figures.
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="data/swcp.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // THE ONLY TWO LINES YOU EDIT BY HAND.
+  //
+  // Official guidebook stage numbers. To update them: click stages on the map
+  // or in the list below, press "Copy progress for the file", then paste over
+  // these two lines and commit.
+  //
+  // Generated from the tracker spreadsheet by tools/build_swcp_data.py — if you
+  // keep the spreadsheet up to date instead, just re-run that and it will bake
+  // the states straight into data/swcp.js, no editing here needed.
+  // ─────────────────────────────────────────────────────────────────────────
+  const DONE    = [];
+  const PARTIAL = [];
+
+  const STORE_KEY = 'swcp-progress-v2';
+  const MI_PER_KM = 0.621371;
+  const REGIONS = ['Somerset & North Devon', 'Cornwall', 'South Devon', 'Dorset'];
+
+  // Walked and not-yet are a colour-vision-validated pair. "Part walked" is the
+  // walked green broken up, rather than a third hue that wouldn't separate from
+  // either — see the note at the top of the coast path section in style.css.
+  const STYLE = {
+    done:     { color: '#3d6b4f', weight: 4,   opacity: 0.95, dashArray: null },
+    partial:  { color: '#3d6b4f', weight: 4,   opacity: 0.95, dashArray: '1,7', lineCap: 'round' },
+    todo:     { color: '#9a8f86', weight: 2.5, opacity: 0.85, dashArray: '5,5' },
+    optional: { color: '#9a8f86', weight: 2,   opacity: 0.6,  dashArray: '1,5', lineCap: 'round' },
+  };
+  const NEXT = { todo: 'done', done: 'partial', partial: 'todo' };
+  const WORDS = { done: 'walked', partial: 'part', todo: '' };
+
+  const stages = (window.SWCP ? window.SWCP.features : [])
+    .map(f => ({ ...f.properties, geometry: f.geometry }))
+    .sort((a, b) => a.seq - b.seq);
+
+  if (!stages.length) {
+    document.getElementById('map').innerHTML =
+      '<p style="padding:2rem">Trail data didn\'t load. Run ' +
+      '<code>python3 tools/build_swcp_data.py</code> to regenerate <code>data/swcp.js</code>.</p>';
+    return;
+  }
+
+  const route = stages.filter(s => !s.optional);
+  const totalKm = route.reduce((n, s) => n + s.km, 0);
+  const totalMi = Math.round(totalKm * MI_PER_KM);
+
+  // ── state ────────────────────────────────────────────────────────────────
+  // The published truth is whatever the build script baked into swcp.js, with the
+  // hand-edited lists above layered on top. Ticks made in the browser live in
+  // localStorage until they're exported back into one or the other.
+  const published = {};
+  stages.forEach(s => { published[s.seq] = s.state || 'todo'; });
+  DONE.forEach(n => { published[n] = 'done'; });
+  PARTIAL.forEach(n => { if (published[n] !== 'done') published[n] = 'partial'; });
+
+  let state = { ...published };
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_KEY));
+    if (saved && typeof saved === 'object') {
+      Object.keys(saved).forEach(k => {
+        if (k in state && NEXT[saved[k]]) state[k] = saved[k];
+      });
+    }
+  } catch (e) { /* nothing saved, or unreadable — published values stand */ }
+
+  const isClean = () => Object.keys(published).every(k => state[k] === published[k]);
+
+  function persist() {
+    try {
+      if (isClean()) localStorage.removeItem(STORE_KEY);
+      else localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    } catch (e) { /* private browsing — ticks just won't survive a reload */ }
+  }
+
+  // ── map ──────────────────────────────────────────────────────────────────
+  const map = L.map('map', { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
+                 'contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 18,
+  }).addTo(map);
+
+  const lines = new Map();
+  const rows = new Map();
+
+  function label(s) {
+    const bits = ['Stage ' + s.seq + ' · ' + s.start + ' → ' + s.end,
+                  s.km.toFixed(1) + ' km'];
+    if (s.ascent) bits.push(s.ascent + ' m up');
+    if (s.time) bits.push(s.time);
+    if (s.optional) bits.push('optional');
+    const word = WORDS[state[s.seq]];
+    if (word) bits.push(word);
+    return bits.join(' · ');
+  }
+
+  stages.forEach(s => {
+    const latlngs = s.geometry.coordinates.map(c => [c[1], c[0]]);
+    const line = L.polyline(latlngs, styleFor(s)).addTo(map);
+
+    // A fat transparent line underneath, so a 2.5px dashed stage is still
+    // comfortably clickable on a touchscreen.
+    const hit = L.polyline(latlngs, { color: '#000', opacity: 0, weight: 14 }).addTo(map);
+
+    [line, hit].forEach(l => {
+      l.bindTooltip(() => label(s), { className: 'stage-tip', sticky: true });
+      l.on('click', () => cycle(s.seq));
+      l.on('mouseover', () => focusRow(s.seq, true));
+      l.on('mouseout', () => focusRow(s.seq, false));
+    });
+
+    lines.set(s.seq, line);
+  });
+
+  map.fitBounds(L.featureGroup([...lines.values()]).getBounds(), { padding: [20, 20] });
+
+  function styleFor(s) {
+    return s.optional ? STYLE.optional : STYLE[state[s.seq]];
+  }
+
+  // ── stage list, grouped by region ────────────────────────────────────────
+  const groups = document.getElementById('stage-groups');
+  REGIONS.forEach(region => {
+    const inRegion = stages.filter(s => s.region === region);
+    if (!inRegion.length) return;
+
+    const block = document.createElement('div');
+    block.className = 'region-block';
+    block.innerHTML = '<div class="region-label">' + region + '</div>';
+
+    const list = document.createElement('ul');
+    list.className = 'stage-list';
+
+    inRegion.forEach(s => {
+      // Deliberately not a <label>: a checkbox has two states and these have three,
+      // and a label would forward each click to the box and cycle twice. The box is
+      // just the indicator (pointer-events:none in CSS) and the row is the control.
+      const row = document.createElement('div');
+      row.className = 'stage-row' + (s.optional ? ' is-optional' : '');
+      row.setAttribute('role', 'button');
+      row.tabIndex = 0;
+      row.innerHTML =
+        '<input type="checkbox" tabindex="-1" aria-hidden="true">' +
+        '<span class="stage-name"><b>' + String(s.seq).padStart(2, '0') + '</b>' +
+          s.start + ' → ' + s.end + (s.optional ? ' (optional)' : '') + '</span>' +
+        '<span class="stage-state"></span>' +
+        '<span class="stage-km">' + s.km.toFixed(1) + ' km</span>';
+
+      row.addEventListener('click', () => cycle(s.seq));
+      row.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cycle(s.seq); }
+      });
+      row.addEventListener('mouseenter', () => highlightLine(s.seq, true));
+      row.addEventListener('mouseleave', () => highlightLine(s.seq, false));
+
+      const item = document.createElement('li');
+      item.appendChild(row);
+      list.appendChild(item);
+      rows.set(s.seq, row);
+    });
+
+    block.appendChild(list);
+    groups.appendChild(block);
+  });
+
+  // ── region meters ────────────────────────────────────────────────────────
+  const meters = new Map();
+  const meterHost = document.getElementById('region-meters');
+  REGIONS.forEach(region => {
+    const el = document.createElement('div');
+    el.className = 'meter';
+    el.innerHTML =
+      '<div class="meter-head"><span class="meter-name">' + region + '</span>' +
+      '<span class="meter-value"></span></div>' +
+      '<div class="meter-track"><div class="meter-fill"></div></div>';
+    meterHost.appendChild(el);
+    meters.set(region, el);
+  });
+
+  // ── interactions ─────────────────────────────────────────────────────────
+  function cycle(seq) {
+    state[seq] = NEXT[state[seq]];
+    persist();
+    render();
+  }
+
+  function focusRow(seq, on) {
+    const row = rows.get(seq);
+    if (!row) return;
+    row.classList.toggle('is-focus', on);
+  }
+
+  function highlightLine(seq, on) {
+    const s = stages.find(x => x.seq === seq);
+    const line = lines.get(seq);
+    if (!line || !s) return;
+    const base = styleFor(s);
+    line.setStyle(on ? { ...base, weight: base.weight + 3, opacity: 1 } : base);
+    if (on) line.bringToFront();
+  }
+
+  function longestRun() {
+    let best = 0, run = 0;
+    route.forEach(s => {
+      run = state[s.seq] === 'done' ? run + s.km : 0;
+      if (run > best) best = run;
+    });
+    return best;
+  }
+
+  function render() {
+    let kmDone = 0, kmPartial = 0, ascent = 0, nDone = 0;
+    const byRegion = {};
+    REGIONS.forEach(r => { byRegion[r] = { done: 0, total: 0 }; });
+
+    stages.forEach(s => {
+      const st = state[s.seq];
+
+      if (!s.optional) {
+        if (st === 'done') {
+          kmDone += s.km;
+          nDone += 1;
+          ascent += s.ascent || 0;
+        } else if (st === 'partial') {
+          kmPartial += s.km;
+        }
+        const bucket = byRegion[s.region];
+        if (bucket) {
+          bucket.total += s.km;
+          if (st === 'done') bucket.done += s.km;
+        }
+      }
+
+      lines.get(s.seq).setStyle(styleFor(s));
+
+      const row = rows.get(s.seq);
+      row.classList.toggle('is-done', st === 'done');
+      row.classList.toggle('is-partial', st === 'partial');
+      const box = row.querySelector('input');
+      box.checked = st === 'done';
+      box.indeterminate = st === 'partial';
+      const chip = row.querySelector('.stage-state');
+      chip.textContent = WORDS[st];
+      chip.className = 'stage-state ' + st;
+      row.setAttribute('aria-label',
+        'Stage ' + s.seq + ', ' + s.start + ' to ' + s.end + ', ' +
+        (WORDS[st] || 'not walked'));
+    });
+
+    const pct = totalKm ? kmDone / totalKm : 0;
+    const miles = Math.round(kmDone * MI_PER_KM);
+
+    document.getElementById('hero-miles').textContent = miles;
+    document.getElementById('hero-sub').textContent =
+      'of ' + totalMi + ' — ' + Math.round(kmDone) + ' of ' + Math.round(totalKm) + ' km' +
+      (kmPartial ? ', plus ' + Math.round(kmPartial * MI_PER_KM) + ' mi part walked' : '');
+    document.getElementById('stat-pct').textContent = (pct * 100).toFixed(1) + '%';
+    document.getElementById('stat-stages').textContent = nDone;
+    document.getElementById('stat-run').textContent = Math.round(longestRun() * MI_PER_KM) + ' mi';
+    document.getElementById('stat-ascent').textContent = ascent.toLocaleString('en-GB');
+    document.getElementById('stat-left').textContent = totalMi - miles;
+
+    REGIONS.forEach(r => {
+      const { done: d, total } = byRegion[r];
+      const el = meters.get(r);
+      const share = total ? d / total : 0;
+      el.querySelector('.meter-fill').style.width = (share * 100).toFixed(1) + '%';
+      el.querySelector('.meter-value').textContent =
+        Math.round(d * MI_PER_KM) + ' / ' + Math.round(total * MI_PER_KM) + ' mi · ' +
+        Math.round(share * 100) + '%';
+    });
+
+    const dirty = !isClean();
+    document.getElementById('editor-status').textContent = dirty
+      ? 'Unsaved changes in this browser — export them to make them public.'
+      : 'Showing the published progress.';
+    document.getElementById('btn-reset').disabled = !dirty;
+  }
+
+  // ── export ───────────────────────────────────────────────────────────────
+  function snippet() {
+    const pick = want => stages
+      .filter(s => state[s.seq] === want)
+      .map(s => s.seq)
+      .sort((a, b) => a - b);
+    return '  const DONE    = [' + pick('done').join(', ') + '];\n' +
+           '  const PARTIAL = [' + pick('partial').join(', ') + '];';
+  }
+
+  document.getElementById('btn-copy').addEventListener('click', function () {
+    const out = document.getElementById('code-out');
+    out.value = snippet();
+    out.hidden = false;
+    const btn = this;
+    const finish = ok => {
+      btn.textContent = ok ? 'Copied — paste over the two lines in walking.html'
+                           : 'Select the text below and copy';
+      setTimeout(() => { btn.textContent = 'Copy progress for the file'; }, 4000);
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(out.value).then(() => finish(true), () => finish(false));
+    } else {
+      out.select();
+      finish(false);
+    }
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', function () {
+    state = { ...published };
+    persist();
+    document.getElementById('code-out').hidden = true;
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

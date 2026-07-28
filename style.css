@@ -1,0 +1,870 @@
+:root {
+  --granite:    #2c2d30;
+  --fern:       #3d6b4f;
+  --lichen:     #7aab8a;
+  --atlantic:   #4a7fa5;
+  --heather:    #8c6b8a;
+  --pale-moor:  #e4e8e0;
+  --parchment:  #f5f3ee;
+  --text:       #1e2320;
+  --light-text: #5a6b5e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--parchment);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+#header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 300px;
+  height: 100vh;
+  background: var(--granite);
+  padding: 2.5rem 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 100;
+}
+
+.avatar-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 0.5rem;
+}
+
+.avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--lichen), var(--atlantic), var(--granite), var(--fern));
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.avatar-wrap img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--granite);
+  display: block;
+  background: var(--fern);
+}
+
+.avatar-placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--fern), var(--lichen));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 0.05em;
+}
+
+#header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+#header h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: var(--lichen);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 0.3rem;
+}
+
+.contact-block p {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--pale-moor);
+  line-height: 1.8;
+  opacity: 0.75;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: var(--pale-moor);
+  opacity: 0.6;
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.social-icons a:hover { opacity: 1; color: var(--lichen); }
+
+/* ── SITE NAV ── */
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.2rem;
+}
+
+.site-nav a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--pale-moor);
+  opacity: 0.55;
+  padding: 0.35rem 0;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.site-nav a:hover { opacity: 1; color: var(--lichen); }
+
+.site-nav a[aria-current="page"] {
+  opacity: 1;
+  color: var(--lichen);
+}
+
+.site-nav a[aria-current="page"]::before {
+  content: '';
+  display: inline-block;
+  width: 0.9rem;
+  height: 1px;
+  background: var(--lichen);
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+/* ── VISITORS BLOCK ── */
+.visitors-block {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.visitors-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--lichen);
+  opacity: 0.7;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.visitors-label::before {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--lichen);
+  opacity: 0.5;
+}
+
+.clustrmap-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.visitors-note {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  line-height: 1.7;
+  color: var(--pale-moor);
+  opacity: 0.4;
+}
+
+/* ── MAIN CONTENT ── */
+#main {
+  margin-left: 300px;
+  flex: 1;
+  padding: 4rem 5rem;
+  max-width: calc(100% - 300px);
+}
+
+section {
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+section:nth-child(5) { animation-delay: 0.5s; }
+section:nth-child(6) { animation-delay: 0.6s; }
+section:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--granite);
+  border-bottom: 1px solid var(--pale-moor);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+
+section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 3rem;
+  height: 2px;
+  background: var(--fern);
+}
+
+section p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text);
+  max-width: 72ch;
+}
+
+section p + p { margin-top: 0.8rem; }
+
+a { color: var(--atlantic); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--heather); }
+
+/* ── POSITIONS TIMELINE ── */
+.timeline { margin-top: 0.5rem; }
+
+.timeline-group { margin-bottom: 1.8rem; }
+
+.timeline-group-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-text);
+  margin-bottom: 0.7rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.3rem 1rem;
+  padding: 0.8rem 1rem 0.8rem 1.2rem;
+  border-left: 2px solid var(--pale-moor);
+  margin-bottom: 0.5rem;
+  background: white;
+  border-radius: 0 6px 6px 0;
+  transition: border-color 0.2s;
+}
+
+.timeline-item:hover { border-left-color: var(--fern); }
+
+.timeline-item .role {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.timeline-item .org {
+  font-size: 0.82rem;
+  color: var(--light-text);
+  margin-top: 0.15rem;
+}
+
+.timeline-item .date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--light-text);
+  text-align: right;
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+
+/* ── EDUCATION ── */
+.degrees { list-style: none; }
+
+.degree-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+
+.degree-item:hover { box-shadow: 0 2px 12px rgba(61,107,79,0.12); }
+
+.degree-badge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fern);
+  min-width: 3rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.degree-info .degree-title {
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.degree-info .degree-inst {
+  font-size: 0.82rem;
+  color: var(--light-text);
+  margin-top: 0.1rem;
+}
+
+.degree-info .degree-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--light-text);
+  margin-top: 0.2rem;
+}
+
+/* ── PUBLICATIONS ── */
+.pub-item {
+  padding: 1.1rem 1.2rem;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pub-item:hover {
+  border-left-color: var(--fern);
+  box-shadow: 0 2px 16px rgba(61,107,79,0.1);
+}
+
+.pub-item .pub-title {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.pub-item .pub-venue {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--light-text);
+  margin-top: 0.4rem;
+  letter-spacing: 0.04em;
+}
+
+.pub-item .pub-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.pub-item .pub-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--atlantic);
+  border: 1px solid var(--pale-moor);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.pub-item .pub-links a:hover {
+  background: var(--atlantic);
+  color: white;
+  border-color: var(--atlantic);
+}
+
+/* ── OTHER WRITING ── */
+.pub-item .pub-outlet {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--heather);
+  margin-bottom: 0.4rem;
+}
+
+.pub-item .pub-blurb {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--light-text);
+  margin-top: 0.45rem;
+  max-width: 66ch;
+}
+
+/* ── TAGS / FIELDS ── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.7rem;
+  background: var(--pale-moor);
+  color: var(--granite);
+  border-radius: 2px;
+}
+
+.tag.sdg {
+  background: var(--granite);
+  color: var(--lichen);
+}
+
+/* ── AWARDS ── */
+#awards ul { list-style: none; }
+
+#awards li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--pale-moor);
+  align-items: baseline;
+  font-size: 0.92rem;
+}
+
+#awards li em {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--fern);
+  font-style: normal;
+  min-width: 2.5rem;
+}
+
+/* ── SERVICES ── */
+#services h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-text);
+  margin: 1rem 0 0.5rem;
+}
+
+#services ul { list-style: none; }
+
+#services li {
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  color: var(--text);
+}
+
+/* ── HOBBIES ── */
+#hobbies ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
+
+#hobbies li {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--pale-moor);
+  border-radius: 2px;
+  color: var(--light-text);
+}
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--pale-moor);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--light-text);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+  #main {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+  body { flex-direction: column; }
+  .visitors-block { margin-top: 1rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COAST PATH PAGE (walking.html)
+   Three states from two hues. #3d6b4f vs #9a8f86 is validated for
+   colour-vision separation; a third hue that also cleared it against both
+   of those doesn't exist in this palette, so "part walked" reuses the
+   walked green and is distinguished by texture (broken line) instead.
+   State is never carried by colour alone anywhere: the map uses line
+   pattern and weight, and every stage is named with its state in words in
+   the list below.
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  --walked:   #3d6b4f;
+  --not-yet:  #9a8f86;
+}
+
+/* ── HERO NUMBER + STAT TILES ── */
+.trail-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.trail-hero .hero-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.4rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--walked);
+  font-variant-numeric: tabular-nums;
+}
+
+.trail-hero .hero-unit {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-text);
+}
+
+.trail-hero-sub {
+  font-size: 0.9rem;
+  color: var(--light-text);
+  margin-bottom: 1.6rem;
+}
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.stat-tile {
+  flex: 1 1 8rem;
+  background: white;
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--pale-moor);
+}
+
+.stat-tile .stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-tile .stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--light-text);
+  margin-top: 0.35rem;
+}
+
+/* ── PROGRESS METERS ── */
+.meter {
+  margin-bottom: 1rem;
+}
+
+.meter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.meter-name {
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.meter-value {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--light-text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.meter-track {
+  height: 8px;
+  background: var(--pale-moor);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  width: 0;
+  background: var(--walked);
+  border-radius: 4px;
+  transition: width 0.45s ease;
+}
+
+/* ── MAP ── */
+#map {
+  height: 560px;
+  border-radius: 6px;
+  background: #eef0ea;
+  border: 1px solid var(--pale-moor);
+  z-index: 0;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 0.9rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--light-text);
+}
+
+.map-legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-swatch {
+  width: 1.4rem;
+  height: 0;
+  border-top-width: 4px;
+  border-top-style: solid;
+}
+
+.legend-swatch.walked  { border-color: var(--walked); }
+.legend-swatch.partial { border-top-style: dotted; border-color: var(--walked); }
+.legend-swatch.not-yet { border-top-width: 3px; border-top-style: dashed; border-color: var(--not-yet); }
+.legend-swatch.optional { border-top-width: 2px; border-top-style: dotted; border-color: var(--not-yet); }
+
+.map-hint {
+  font-size: 0.82rem;
+  color: var(--light-text);
+  margin-top: 0.7rem;
+}
+
+/* Leaflet's own tooltip, restyled to match the site */
+.leaflet-tooltip.stage-tip {
+  background: var(--granite);
+  border: none;
+  border-radius: 3px;
+  color: var(--parchment);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.55rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.leaflet-tooltip.stage-tip::before { border: none; }
+
+.leaflet-container { font-family: 'Outfit', sans-serif; }
+
+/* ── STAGE CHECKLIST (also the accessible table view of the map) ── */
+.editor-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--granite);
+  background: white;
+  border: 1px solid var(--pale-moor);
+  border-radius: 3px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover { border-color: var(--fern); color: var(--fern); }
+
+.btn.primary {
+  background: var(--fern);
+  border-color: var(--fern);
+  color: white;
+}
+
+.btn.primary:hover { background: var(--granite); border-color: var(--granite); color: white; }
+
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.editor-status {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--light-text);
+}
+
+.region-block { margin-bottom: 1.8rem; }
+
+.region-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--light-text);
+  margin-bottom: 0.7rem;
+}
+
+.stage-list { list-style: none; }
+
+.stage-row {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr auto auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.9rem;
+  background: white;
+  border-left: 2px solid var(--not-yet);
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 3px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.stage-row:hover { background: #fbfaf7; }
+
+.stage-row.is-done { border-left-color: var(--walked); }
+
+.stage-row.is-partial {
+  border-left-color: var(--walked);
+  border-left-style: dotted;
+  border-left-width: 3px;
+}
+
+.stage-row.is-optional { opacity: 0.72; }
+
+.stage-row.is-focus {
+  background: var(--pale-moor);
+  box-shadow: inset 0 0 0 1px var(--lichen);
+}
+
+.stage-row input[type="checkbox"] {
+  width: 0.95rem;
+  height: 0.95rem;
+  accent-color: var(--walked);
+  pointer-events: none;   /* indicator only — the whole row is the control */
+}
+
+.stage-row:focus-visible {
+  outline: 2px solid var(--fern);
+  outline-offset: 1px;
+}
+
+.stage-row .stage-name {
+  font-size: 0.88rem;
+  color: var(--light-text);
+}
+
+.stage-row.is-done .stage-name,
+.stage-row.is-partial .stage-name { color: var(--text); }
+
+/* The word beside each stage is what makes state readable without colour. */
+.stage-state {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.stage-state.done    { background: var(--walked); color: white; }
+.stage-state.partial { background: var(--pale-moor); color: var(--fern); box-shadow: inset 0 0 0 1px var(--lichen); }
+.stage-state.todo    { color: var(--light-text); }
+
+.stage-row .stage-name b {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--light-text);
+  margin-right: 0.6rem;
+}
+
+.stage-row .stage-km {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--light-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.code-out {
+  width: 100%;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: white;
+  border: 1px solid var(--pale-moor);
+  border-radius: 4px;
+  padding: 0.8rem;
+  resize: vertical;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  #map { height: 60vh; }
+  .trail-hero .hero-number { font-size: 2.6rem; }
+}

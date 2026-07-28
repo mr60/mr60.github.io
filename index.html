@@ -7,480 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --granite:    #2c2d30;
-      --fern:       #3d6b4f;
-      --lichen:     #7aab8a;
-      --atlantic:   #4a7fa5;
-      --heather:    #8c6b8a;
-      --pale-moor:  #e4e8e0;
-      --parchment:  #f5f3ee;
-      --text:       #1e2320;
-      --light-text: #5a6b5e;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--parchment);
-      color: var(--text);
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* ── SIDEBAR ── */
-    #header {
-      position: fixed;
-      top: 0; left: 0;
-      width: 300px;
-      height: 100vh;
-      background: var(--granite);
-      padding: 2.5rem 2rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      z-index: 100;
-    }
-
-    .avatar-wrap {
-      position: relative;
-      width: 120px;
-      height: 120px;
-      margin-bottom: 0.5rem;
-    }
-
-    .avatar-wrap::before {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(var(--lichen), var(--atlantic), var(--granite), var(--fern));
-      animation: spin 8s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .avatar-wrap img {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--granite);
-      display: block;
-      background: var(--fern);
-    }
-
-    .avatar-placeholder {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--fern), var(--lichen));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: white;
-      letter-spacing: 0.05em;
-    }
-
-    #header h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: white;
-      line-height: 1.2;
-      letter-spacing: 0.02em;
-    }
-
-    #header h4 {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 300;
-      color: var(--lichen);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-top: 0.3rem;
-    }
-
-    .contact-block p {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--pale-moor);
-      line-height: 1.8;
-      opacity: 0.75;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .social-icons a {
-      color: var(--pale-moor);
-      opacity: 0.6;
-      text-decoration: none;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: opacity 0.2s, color 0.2s;
-    }
-
-    .social-icons a:hover { opacity: 1; color: var(--lichen); }
-
-    /* ── VISITORS BLOCK ── */
-    .visitors-block {
-      margin-top: auto;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .visitors-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.58rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--lichen);
-      opacity: 0.7;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .visitors-label::before {
-      content: '';
-      display: inline-block;
-      width: 1.5rem;
-      height: 1px;
-      background: var(--lichen);
-      opacity: 0.5;
-    }
-
-    .clustrmap-wrap {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    /* ── MAIN CONTENT ── */
-    #main {
-      margin-left: 300px;
-      flex: 1;
-      padding: 4rem 5rem;
-      max-width: calc(100% - 300px);
-    }
-
-    section {
-      margin-bottom: 4rem;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.6s ease forwards;
-    }
-
-    section:nth-child(1) { animation-delay: 0.1s; }
-    section:nth-child(2) { animation-delay: 0.2s; }
-    section:nth-child(3) { animation-delay: 0.3s; }
-    section:nth-child(4) { animation-delay: 0.4s; }
-    section:nth-child(5) { animation-delay: 0.5s; }
-    section:nth-child(6) { animation-delay: 0.6s; }
-    section:nth-child(7) { animation-delay: 0.7s; }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    section h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--granite);
-      border-bottom: 1px solid var(--pale-moor);
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.4rem;
-      position: relative;
-    }
-
-    section h3::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; left: 0;
-      width: 3rem;
-      height: 2px;
-      background: var(--fern);
-    }
-
-    section p {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--text);
-      max-width: 72ch;
-    }
-
-    section p + p { margin-top: 0.8rem; }
-
-    a { color: var(--atlantic); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--heather); }
-
-    /* ── POSITIONS TIMELINE ── */
-    .timeline { margin-top: 0.5rem; }
-
-    .timeline-group { margin-bottom: 1.8rem; }
-
-    .timeline-group-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--light-text);
-      margin-bottom: 0.7rem;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.3rem 1rem;
-      padding: 0.8rem 1rem 0.8rem 1.2rem;
-      border-left: 2px solid var(--pale-moor);
-      margin-bottom: 0.5rem;
-      background: white;
-      border-radius: 0 6px 6px 0;
-      transition: border-color 0.2s;
-    }
-
-    .timeline-item:hover { border-left-color: var(--fern); }
-
-    .timeline-item .role {
-      font-weight: 400;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .timeline-item .org {
-      font-size: 0.82rem;
-      color: var(--light-text);
-      margin-top: 0.15rem;
-    }
-
-    .timeline-item .date {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--light-text);
-      text-align: right;
-      white-space: nowrap;
-      padding-top: 0.2rem;
-    }
-
-    /* ── EDUCATION ── */
-    .degrees { list-style: none; }
-
-    .degree-item {
-      display: flex;
-      gap: 1.5rem;
-      padding: 1rem;
-      background: white;
-      border-radius: 6px;
-      margin-bottom: 0.6rem;
-      align-items: flex-start;
-      transition: box-shadow 0.2s;
-    }
-
-    .degree-item:hover { box-shadow: 0 2px 12px rgba(61,107,79,0.12); }
-
-    .degree-badge {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--fern);
-      min-width: 3rem;
-      text-align: center;
-      padding-top: 0.1rem;
-    }
-
-    .degree-info .degree-title {
-      font-weight: 400;
-      font-size: 0.95rem;
-    }
-
-    .degree-info .degree-inst {
-      font-size: 0.82rem;
-      color: var(--light-text);
-      margin-top: 0.1rem;
-    }
-
-    .degree-info .degree-date {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--light-text);
-      margin-top: 0.2rem;
-    }
-
-    /* ── PUBLICATIONS ── */
-    .pub-item {
-      padding: 1.1rem 1.2rem;
-      background: white;
-      border-radius: 6px;
-      margin-bottom: 0.8rem;
-      border-left: 3px solid transparent;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .pub-item:hover {
-      border-left-color: var(--fern);
-      box-shadow: 0 2px 16px rgba(61,107,79,0.1);
-    }
-
-    .pub-item .pub-title {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .pub-item .pub-venue {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--light-text);
-      margin-top: 0.4rem;
-      letter-spacing: 0.04em;
-    }
-
-    .pub-item .pub-links {
-      margin-top: 0.5rem;
-      display: flex;
-      gap: 0.8rem;
-    }
-
-    .pub-item .pub-links a {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--atlantic);
-      border: 1px solid var(--pale-moor);
-      padding: 0.15rem 0.5rem;
-      border-radius: 3px;
-      transition: all 0.2s;
-    }
-
-    .pub-item .pub-links a:hover {
-      background: var(--atlantic);
-      color: white;
-      border-color: var(--atlantic);
-    }
-
-    /* ── TAGS / FIELDS ── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.3rem;
-    }
-
-    .tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.06em;
-      padding: 0.3rem 0.7rem;
-      background: var(--pale-moor);
-      color: var(--granite);
-      border-radius: 2px;
-    }
-
-    .tag.sdg {
-      background: var(--granite);
-      color: var(--lichen);
-    }
-
-    /* ── AWARDS ── */
-    #awards ul { list-style: none; }
-
-    #awards li {
-      display: flex;
-      gap: 1rem;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid var(--pale-moor);
-      align-items: baseline;
-      font-size: 0.92rem;
-    }
-
-    #awards li em {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--fern);
-      font-style: normal;
-      min-width: 2.5rem;
-    }
-
-    /* ── SERVICES ── */
-    #services h4 {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--light-text);
-      margin: 1rem 0 0.5rem;
-    }
-
-    #services ul { list-style: none; }
-
-    #services li {
-      font-size: 0.9rem;
-      padding: 0.25rem 0;
-      color: var(--text);
-    }
-
-    /* ── HOBBIES ── */
-    #hobbies ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    #hobbies li {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 0.4rem 1rem;
-      border: 1px solid var(--pale-moor);
-      border-radius: 2px;
-      color: var(--light-text);
-    }
-
-    footer {
-      margin-top: 4rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--pale-moor);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--light-text);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      #header {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: column;
-      }
-      #main {
-        margin-left: 0;
-        max-width: 100%;
-        padding: 2rem 1.5rem;
-      }
-      body { flex-direction: column; }
-      .visitors-block { margin-top: 1rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -507,15 +34,40 @@
     <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Scholar</a>
   </div>
 
+  <nav class="site-nav">
+    <a href="index.html" aria-current="page">Research</a>
+    <a href="walking.html">Coast Path</a>
+  </nav>
+
   <!-- ── VISITORS ── -->
+  <!-- w=236 matches the sidebar's inner width (300px - 2rem padding each side); leaving
+       it as w=a made the widget size itself from an unlaid-out parent and overflow.
+       co = ocean/background, cl = land, cmn/cmo = recent/older dots, ct = label text.
+       t=tt shows the visitor count and hides the date (t=n hid both). -->
   <div class="visitors-block">
     <div class="visitors-label">Visitors</div>
-    <div class="mmvst_globe">
+    <div class="clustrmap-wrap">
       <script type="text/javascript" id="mapmyvisitors"
-        src="https://mapmyvisitors.com/map.js?cl=080808&w=a&t=n&d=pRpqQFE3fOqpQyHuy8UEEP8n7arl4tWLVAlKnhYx2kc&co=ffffff&cmo=53cdff&cmn=3accb9&ct=808080">
+        src="https://mapmyvisitors.com/map.js?cl=8aa398&w=236&t=tt&d=pRpqQFE3fOqpQyHuy8UEEP8n7arl4tWLVAlKnhYx2kc&co=2c2d30&cmo=8c6b8a&cmn=4a7fa5&ct=e4e8e0">
       </script>
     </div>
+    <p class="visitors-note" id="visitors-blocked" hidden>
+      Hidden by your browser's tracker blocker — nothing is broken.
+    </p>
   </div>
+
+  <script>
+    // mapmyvisitors.com sits on the standard privacy blocklists, so for a fair share of
+    // visitors (and quite possibly you) the script never runs and the block is silently
+    // empty. Say so rather than leaving a hole in the sidebar.
+    addEventListener('load', function () {
+      setTimeout(function () {
+        if (!document.getElementById('mapmyvisitors-widget')) {
+          document.getElementById('visitors-blocked').hidden = false;
+        }
+      }, 2500);
+    });
+  </script>
 
 </header>
 
@@ -688,15 +240,31 @@
       <div class="pub-links"><a href="https://doi.org/10.1111/wej.12539" target="_blank">DOI</a></div>
     </div>
 
-    <div class="pub-item">
-      <div class="pub-title">Rodriguez — Climate change could overwhelm our sewers – here's how green infrastructure could help</div>
-      <div class="pub-venue">The Conversation UK · 2024</div>
-      <div class="pub-links"><a href="https://theconversation.com" target="_blank">Article</a></div>
-    </div>
-
     <p style="margin-top:1.2rem">
       <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--light-text)">Full list on Google Scholar →</a>
     </p>
+  </section>
+
+  <!-- OTHER WRITING -->
+  <section id="writing">
+    <h3>Other Writing</h3>
+    <p style="font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--light-text); margin-bottom:1.2rem; letter-spacing:0.04em;">Commentary and non-peer-reviewed pieces</p>
+
+    <div class="pub-item">
+      <div class="pub-outlet">Times Higher Education — THE Campus</div>
+      <div class="pub-title">Environmental researchers know the impact of AI – so why do they still use it?</div>
+      <div class="pub-venue">Hartley, Robinson &amp; Rodriguez · June 2026</div>
+      <div class="pub-blurb">On the gap between what environmental researchers know about AI's footprint and how they actually work — and who they hold responsible for closing it.</div>
+      <div class="pub-links"><a href="https://www.timeshighereducation.com/campus/environmental-researchers-know-impact-ai-so-why-do-they-still-use-it" target="_blank">Read</a></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-outlet">The Conversation UK</div>
+      <div class="pub-title">Climate change could overwhelm our sewers – here's how green infrastructure could help</div>
+      <div class="pub-venue">Rodriguez · December 2024</div>
+      <div class="pub-blurb">Why the UK's combined sewers spill more as rainfall intensifies, and what green roofs, rain gardens and permeable paving can realistically do about it.</div>
+      <div class="pub-links"><a href="https://theconversation.com/climate-change-could-overwhelm-our-sewers-heres-how-green-infrastructure-could-help-244460" target="_blank">Read</a></div>
+    </div>
   </section>
 
   <!-- TEACHING -->
@@ -773,7 +341,8 @@
   <!-- BEYOND RESEARCH -->
   <section id="hobbies">
     <h3>Beyond Research</h3>
-    <p>When not at my desk, I'm usually outside in England's South West. I love <strong>Dartmoor</strong> — the tors and boggy paths suit me. I'm also working through the <strong>South West Coast Path</strong>, section by section - currently 200+ out of 630 miles done !</p>
+    <p>When not at my desk, I'm usually outside in England's South West. I love <strong>Dartmoor</strong> — the tors and boggy paths suit me. I'm also working through the <strong>South West Coast Path</strong>, section by section.</p>
+    <p style="margin-top:1rem"><a href="walking.html" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;">See the map of what I've walked →</a></p>
   </section>
 
   <footer>
