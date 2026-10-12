@@ -6,72 +6,32 @@
   <title>South West Coast Path | May Rodriguez</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<!-- ── SIDEBAR ── -->
-<header id="header">
-  <div>
-    <div class="avatar-wrap">
-      <img src="images/profile.jpg" alt="May" />
+<!-- ── TOP NAV ── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">may rodriguez</a>
+    <div class="nav-links">
+      <a href="index.html">about</a>
+      <a href="publications.html">publications</a>
+      <a href="cv.html">cv</a>
+      <a href="walking.html" aria-current="page">coast path</a>
     </div>
-    <h1>May Rodriguez</h1>
-    <h4>Research Fellow</h4>
   </div>
-
-  <div class="contact-block">
-    <p>University of Exeter<br>
-       Exeter, United Kingdom<br><br>
-       m.[lastname]3[AT]exeter.ac.uk
-    </p>
-  </div>
-
-  <div class="social-icons">
-    <a href="https://github.com/mr60" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/mayrodben/" target="_blank">LinkedIn</a>
-    <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Scholar</a>
-  </div>
-
-  <nav class="site-nav">
-    <a href="index.html">Research</a>
-    <a href="walking.html" aria-current="page">Coast Path</a>
-  </nav>
-
-  <div class="visitors-block">
-    <div class="visitors-label">Visitors</div>
-    <div class="clustrmap-wrap">
-      <script type="text/javascript" id="mapmyvisitors"
-        src="https://mapmyvisitors.com/map.js?cl=8aa398&w=236&t=tt&d=pRpqQFE3fOqpQyHuy8UEEP8n7arl4tWLVAlKnhYx2kc&co=2c2d30&cmo=8c6b8a&cmn=4a7fa5&ct=e4e8e0">
-      </script>
-    </div>
-    <p class="visitors-note" id="visitors-blocked" hidden>
-      Hidden by your browser's tracker blocker — nothing is broken.
-    </p>
-  </div>
-
-  <script>
-    addEventListener('load', function () {
-      setTimeout(function () {
-        if (!document.getElementById('mapmyvisitors-widget')) {
-          document.getElementById('visitors-blocked').hidden = false;
-        }
-      }, 2500);
-    });
-  </script>
-
-</header>
+</nav>
 
 <!-- ── MAIN ── -->
-<div id="main">
+<main id="main">
 
   <!-- PROGRESS -->
   <section id="progress">
     <h3>South West Coast Path</h3>
-    <p>England's longest National Trail runs 630 miles from Minehead in Somerset, around
+    <p>The South West Coast Path runs 630 miles from Minehead in Somerset, around
        the whole peninsula, to South Haven Point on Poole Harbour. I'm walking it in
        day-sized pieces, out of order, filling in the gaps as I go.</p>
 
@@ -147,7 +107,12 @@
     over the guidebook's figures.
   </footer>
 
-</div>
+</main>
+
+<footer class="site-footer">
+  &copy; Copyright 2026 May Rodriguez. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+  Last updated: <script>document.write(new Date(document.lastModified).toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'}))</script>.
+</footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -231,10 +196,10 @@
 
   // ── map ──────────────────────────────────────────────────────────────────
   const map = L.map('map', { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
-                 'contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 18,
+  // Esri's light-grey canvas: no API key needed, just the attribution.
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+    maxZoom: 16,
   }).addTo(map);
 
   const lines = new Map();

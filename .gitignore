@@ -1,0 +1,19 @@
+# Whitelist: ignore everything, then allow only what the published site loads.
+# Raw data (south_west/, general_map/), build tools (tools/), parked pages
+# (_parked/), .DS_Store and editor config all stay local.
+*
+
+!.gitignore
+
+# Pages and styles
+!index.html
+!publications.html
+!cv.html
+!walking.html
+!style.css
+
+# Assets the pages load
+!images/
+!images/profile.jpg
+!data/
+!data/swcp.js

@@ -2,353 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>May Rodriguez| Research Fellow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>May Rodriguez | Research Fellow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ── SIDEBAR ── -->
-<header id="header">
-  <div>
-    <div class="avatar-wrap">
-      <img src="images/profile.jpg" alt="May" />
+<!-- ── TOP NAV ── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html" aria-current="page">about</a>
+      <a href="publications.html">publications</a>
+      <a href="cv.html">cv</a>
+      <a href="walking.html">coast path</a>
     </div>
-    <h1>May Rodriguez</h1>
-    <h4>Research Fellow</h4>
   </div>
+</nav>
 
-  <div class="contact-block">
-    <p>University of Exeter<br>
-       Exeter, United Kingdom<br><br>
-       m.[lastname]3[AT]exeter.ac.uk
-    </p>
-  </div>
+<main id="main">
 
-  <div class="social-icons">
-    <a href="https://github.com/mr60" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/mayrodben/" target="_blank">LinkedIn</a>
-    <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Scholar</a>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">may rodriguez</h1>
+    <p class="desc">I am a Research Fellow at the <a href="https://experts.exeter.ac.uk/34776-mayra-rodriguez" target="_blank">University of Exeter</a>, affiliated with the <a href="https://netpositivecentre.com/about-us/people/mayra-rodriguez/" target="_blank">Net Positive Health and Climate Solutions Centre</a> and the <a href="https://www.exeter.ac.uk/research/centres/environmental-intelligence/" target="_blank">Centre for Environmental Intelligence</a>.</p>
+  </header>
 
-  <nav class="site-nav">
-    <a href="index.html" aria-current="page">Research</a>
-    <a href="walking.html">Coast Path</a>
-  </nav>
-
-  <!-- ── VISITORS ── -->
-  <!-- w=236 matches the sidebar's inner width (300px - 2rem padding each side); leaving
-       it as w=a made the widget size itself from an unlaid-out parent and overflow.
-       co = ocean/background, cl = land, cmn/cmo = recent/older dots, ct = label text.
-       t=tt shows the visitor count and hides the date (t=n hid both). -->
-  <div class="visitors-block">
-    <div class="visitors-label">Visitors</div>
-    <div class="clustrmap-wrap">
-      <script type="text/javascript" id="mapmyvisitors"
-        src="https://mapmyvisitors.com/map.js?cl=8aa398&w=236&t=tt&d=pRpqQFE3fOqpQyHuy8UEEP8n7arl4tWLVAlKnhYx2kc&co=2c2d30&cmo=8c6b8a&cmn=4a7fa5&ct=e4e8e0">
-      </script>
+  <article>
+    <div class="profile">
+      <img src="images/profile.jpg" alt="May Rodriguez" />
     </div>
-    <p class="visitors-note" id="visitors-blocked" hidden>
-      Hidden by your browser's tracker blocker — nothing is broken.
-    </p>
-  </div>
 
-  <script>
-    // mapmyvisitors.com sits on the standard privacy blocklists, so for a fair share of
-    // visitors (and quite possibly you) the script never runs and the block is silently
-    // empty. Say so rather than leaving a hole in the sidebar.
-    addEventListener('load', function () {
-      setTimeout(function () {
-        if (!document.getElementById('mapmyvisitors-widget')) {
-          document.getElementById('visitors-blocked').hidden = false;
-        }
-      }, 2500);
-    });
-  </script>
+    <div class="clearfix">
+      <p>I am an interdisciplinary researcher focused on data-driven research and solutions for the environment, climate and health. My work combines AI, environmental modelling and data science. My research interests include AI for climate, the environment and health, and I am also interested in the sustainability of AI itself.</p>
+      <p>I earned my PhD from the <a href="https://uq-exeter.institute/" target="_blank">QUEX Institute</a> (University of Exeter and University of Queensland), working on the climate resilience of urban drainage systems and the role of green infrastructure. Previously, I earned an MSc in Water Engineering with Management from the University of Exeter and a BSc in Chemical Engineering. I've also worked as a postdoctoral researcher at <a href="https://www.eawag.ch/" target="_blank">Eawag</a> (ETH Domain), forecasting sewage spills with deep learning; as a water engineer at Arup; and as an Earth observation scientist at <a href="https://www.pml.ac.uk/" target="_blank">Plymouth Marine Laboratory</a>, on the ESA SCOPE, ESA TIME and Simons Foundation CBIOMES projects. You can find my full CV <a href="cv.html">here</a>.</p>
 
-</header>
-
-<!-- ── MAIN ── -->
-<div id="main">
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h3>About Me</h3>
-    <p>I am a Research Fellow at the <a href="https://experts.exeter.ac.uk/34776-mayra-rodriguez" target="_blank">University of Exeter</a> specialising in AI and data science for environmental &amp; health applications. I am affiliated with the <a href="https://netpositivecentre.com/about-us/people/mayra-rodriguez/" target="_blank">Net Positive Health and Climate Solutions Centre</a> and the <a href="https://www.exeter.ac.uk/research/centres/environmental-intelligence/" target="_blank">Centre for Environmental Intelligence</a>.</p>
-    <p>I have a multidisciplinary background in water systems, spanning hydrological modelling, water quality assessment, marine applications, and climate resilience. My doctoral research at the <a href="https://uq-exeter.institute/" target="_blank">QUEX Institute</a> (University of Exeter &amp; University of Queensland) used numerical modelling and machine learning to assess climate resilience in water systems. As a postdoctoral researcher at <a href="https://www.eawag.ch/" target="_blank">Eawag</a> (ETH Domain), I applied deep learning to forecast sewage spills, while also serving as scientific assistant to the Directorate. At <a href="https://www.pml.ac.uk/" target="_blank">PML</a>, my work focused on remote sensing and machine learning for marine applications, contributing to ESA SCOPE, ESA TIME, and the Simons Foundation CBIOMES projects.</p>
-  </section>
-
-  <!-- RESEARCH INTERESTS -->
-  <section id="interests">
-    <h3>Research Interests</h3>
-    <p>My research sits at the intersection of <strong>environmental intelligence</strong>, <strong>climate </strong>, and <strong> health</strong>, applied to water systems, marine environments, and climate adaptation.</p>
-    <div class="tags" style="margin-top:1rem">
-      <span class="tag">Climate change impacts &amp; adaptation</span>
-      <span class="tag">Artificial intelligence</span>
-      <span class="tag">Data engineering &amp; science</span>
-      <span class="tag">Geospatial information systems</span>
-      <span class="tag">Urban hydrology</span>
-      <span class="tag">Hydrodynamics &amp; hydraulic engineering</span>
-      <span class="tag sdg">SDG 6 — Clean Water</span>
-      <span class="tag sdg">SDG 11 — Sustainable Cities</span>
-      <span class="tag sdg">SDG 13 — Climate Action</span>
+      <h2>/etc</h2>
+      <p>When I'm not at my desk, I'm usually outside in England's South West. I love Dartmoor; the tors and boggy paths suit me. I'm also working my way along the South West Coast Path, section by section. <a href="walking.html">See the map of what I've walked.</a></p>
     </div>
-  </section>
 
-  <!-- POSITIONS -->
-  <section id="positions">
-    <h3>Positions</h3>
-    <div class="timeline">
-
-      <div class="timeline-group">
-        <div class="timeline-group-label">University of Exeter</div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Research Fellow</div>
-            <div class="org">University of Exeter — Exeter, United Kingdom</div>
-          </div>
-          <div class="date">Oct 2025 –&nbsp;present</div>
-        </div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Doctoral Researcher</div>
-            <div class="org">QUEX Institute — Australia &amp; United Kingdom</div>
-          </div>
-          <div class="date">Jan 2019 – Oct 2022</div>
-        </div>
+    <div class="social">
+      <div class="contact-icons">
+        <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" title="Google Scholar" target="_blank"><i class="ai ai-google-scholar"></i></a>
+        <a href="https://github.com/mr60" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/mayrodben/" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
       </div>
+      <div class="contact-note">Email is the best way to reach me: m.[lastname]3 [at] exeter.ac.uk</div>
 
-      <div class="timeline-group">
-        <div class="timeline-group-label">Academic Positions</div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Earth Observation Scientist</div>
-            <div class="org">Plymouth Marine Laboratory — Plymouth, United Kingdom</div>
-          </div>
-          <div class="date">Feb 2024 – Oct 2025</div>
-        </div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Post-Doctoral Researcher</div>
-            <div class="org">Eawag (ETH Domain) — Dübendorf, Switzerland</div>
-          </div>
-          <div class="date">Sep 2022 – Oct 2023</div>
-        </div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Scientific Assistant to the Directorate</div>
-            <div class="org">Eawag (ETH Domain) — Dübendorf, Switzerland</div>
-          </div>
-          <div class="date">Mar 2023 – Oct 2023</div>
-        </div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Research Assistant</div>
-            <div class="org">Universidad de la República — Montevideo, Uruguay</div>
-          </div>
-          <div class="date">May 2013 – Sep 2015</div>
-        </div>
-      </div>
-
-      <div class="timeline-group">
-        <div class="timeline-group-label">Industry</div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Water Engineer</div>
-            <div class="org">Arup Group — Bristol, United Kingdom</div>
-          </div>
-          <div class="date">Oct 2023 – Feb 2024</div>
-        </div>
-        <div class="timeline-item">
-          <div>
-            <div class="role">Plant Engineer</div>
-            <div class="org">Montes del Plata — Uruguay</div>
-          </div>
-          <div class="date">Sep 2015 – Sep 2017</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <h3>Education</h3>
-    <ul class="degrees">
-      <li class="degree-item">
-        <div class="degree-badge">PhD</div>
-        <div class="degree-info">
-          <div class="degree-title">Engineering</div>
-          <div class="degree-inst">QUEX Institute — University of Exeter &amp; University of Queensland</div>
-          <div class="degree-date">Jan 2019 – Oct 2022</div>
-        </div>
-      </li>
-      <li class="degree-item">
-        <div class="degree-badge">MSc</div>
-        <div class="degree-info">
-          <div class="degree-title">Water Engineering with Management</div>
-          <div class="degree-inst">University of Exeter — Exeter, United Kingdom</div>
-          <div class="degree-date">2017 – 2018</div>
-        </div>
-      </li>
-      <li class="degree-item">
-        <div class="degree-badge">BSc</div>
-        <div class="degree-info">
-          <div class="degree-title">Chemical Engineering</div>
-          <div class="degree-inst">Universidad de la República — Montevideo, Uruguay</div>
-          <div class="degree-date">2010 – 2015</div>
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- SELECTED PUBLICATIONS -->
-  <section id="publications">
-    <h3>Selected Publications</h3>
-    <p style="font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--light-text); margin-bottom:1.2rem; letter-spacing:0.04em;">12 peer-reviewed publications · 366 citations · h-index 11</p>
-
-    <div class="pub-item">
-      <div class="pub-title">Rodriguez, Cavadini and Cook — Do baseline assumptions alter the efficacy of green stormwater infrastructure to reduce combined sewer overflows?</div>
-      <div class="pub-venue">Water Research, 253, 121284 · 2024</div>
-      <div class="pub-links"><a href="https://doi.org/10.1016/J.WATRES.2024.121284" target="_blank">DOI</a></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Rodriguez et al. — The effect of green infrastructure on resilience performance in combined sewer systems under climate change</div>
-      <div class="pub-venue">Journal of Environmental Management, 353, 120229 · 2024</div>
-      <div class="pub-links"><a href="https://doi.org/10.1016/J.JENVMAN.2024.120229" target="_blank">DOI</a></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Rodriguez et al. — Global resilience analysis of combined sewer systems under continuous hydrologic simulation</div>
-      <div class="pub-venue">Journal of Environmental Management, 344, 118607 · 2023</div>
-      <div class="pub-links"><a href="https://doi.org/10.1016/j.jenvman.2023.118607" target="_blank">DOI</a></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Rodriguez et al. — Exploring the spatial impact of green infrastructure on urban drainage resilience</div>
-      <div class="pub-venue">Water, 13(13), 1789 · 2020</div>
-      <div class="pub-links"><a href="https://doi.org/10.3390/w13131789" target="_blank">DOI</a></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">Rodriguez et al. — A study of the Resilience Analysis Grid method and its applicability to the water sector in England and Wales</div>
-      <div class="pub-venue">Water and Environment Journal, 34(4), 623–633 · 2019</div>
-      <div class="pub-links"><a href="https://doi.org/10.1111/wej.12539" target="_blank">DOI</a></div>
-    </div>
-
-    <p style="margin-top:1.2rem">
-      <a href="https://scholar.google.com/citations?hl=en&user=94H25SIAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--light-text)">Full list on Google Scholar →</a>
-    </p>
-  </section>
-
-  <!-- OTHER WRITING -->
-  <section id="writing">
-    <h3>Other Writing</h3>
-    <p style="font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--light-text); margin-bottom:1.2rem; letter-spacing:0.04em;">Commentary and non-peer-reviewed pieces</p>
-
-    <div class="pub-item">
-      <div class="pub-outlet">Times Higher Education — THE Campus</div>
-      <div class="pub-title">Environmental researchers know the impact of AI – so why do they still use it?</div>
-      <div class="pub-venue">Hartley, Robinson &amp; Rodriguez · June 2026</div>
-      <div class="pub-blurb">On the gap between what environmental researchers know about AI's footprint and how they actually work — and who they hold responsible for closing it.</div>
-      <div class="pub-links"><a href="https://www.timeshighereducation.com/campus/environmental-researchers-know-impact-ai-so-why-do-they-still-use-it" target="_blank">Read</a></div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-outlet">The Conversation UK</div>
-      <div class="pub-title">Climate change could overwhelm our sewers – here's how green infrastructure could help</div>
-      <div class="pub-venue">Rodriguez · December 2024</div>
-      <div class="pub-blurb">Why the UK's combined sewers spill more as rainfall intensifies, and what green roofs, rain gardens and permeable paving can realistically do about it.</div>
-      <div class="pub-links"><a href="https://theconversation.com/climate-change-could-overwhelm-our-sewers-heres-how-green-infrastructure-could-help-244460" target="_blank">Read</a></div>
-    </div>
-  </section>
-
-  <!-- TEACHING -->
-  <section id="teaching">
-    <h3>Teaching</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div><div class="role">Urban Water Management Course</div><div class="org">MSc Sustainable Engineering, ETH Zürich — hydrological-hydraulic modelling lab support</div></div>
-        <div class="date">2022 – 2023</div>
-      </div>
-      <div class="timeline-item">
-        <div><div class="role">Postgraduate Teaching Assistant</div><div class="org">University of Exeter — MATLAB practical courses; LTHE Level 1</div></div>
-        <div class="date">Jan – Feb 2020</div>
-      </div>
-      <div class="timeline-item">
-        <div><div class="role">Materials Engineering Lecturer &amp; Practical Tutor</div><div class="org">Into, University of Exeter — International Year One (Engineering)</div></div>
-        <div class="date">Sep – Dec 2019</div>
+      <!-- co = ocean/background, cl = land, cmn/cmo = recent/older dots, ct = label text.
+           t=tt shows the visitor count and hides the date. -->
+      <div class="visitors">
+        <script type="text/javascript" id="mapmyvisitors"
+          src="https://mapmyvisitors.com/map.js?cl=d9ded6&w=200&t=tt&d=pRpqQFE3fOqpQyHuy8UEEP8n7arl4tWLVAlKnhYx2kc&co=ffffff&cmo=8c6b8a&cmn=3d6b4f&ct=5a6b5e">
+        </script>
       </div>
     </div>
-  </section>
+  </article>
 
-  <!-- AWARDS -->
-  <section id="awards">
-    <h3>Awards &amp; Honours</h3>
-    <ul>
-      <li><em>2023</em> Best Poster Award — Novatech Urban Water, Lyon, France</li>
-      <li><em>2022</em> Best Oral Presentation — IWA YWP Conference, Wales</li>
-      <li><em>2020</em> Best Oral Presentation — 2nd Year PhD Conference, University of Exeter</li>
-      <li><em>2019–21</em> QUEX Institute Doctoral Studentship — University of Exeter</li>
-      <li><em>2018</em> Dean's Commendation for Exceptional Performance — University of Exeter</li>
-      <li><em>2018</em> MSc Award for Best Engineering Project — University of Exeter</li>
-      <li><em>2017</em> Pro-Chancellor Scholarship — University of Exeter</li>
-    </ul>
-  </section>
+</main>
 
-  <!-- ACADEMIC SERVICE -->
-  <section id="services">
-    <h3>Outreach &amp; Service</h3>
-    <h4>Outreach</h4>
-    <ul>
-      <li>Planet Ocean Super Saturday — The Box, Plymouth Marine Laboratory (2025)</li>
-      <li>Atlantis Project Stand — Royal Society Summer Science Fair, London (2024)</li>
-      <li>Organising member, Women in Climate — University of Exeter (2019–2021)</li>
-      <li>STEM Ambassador, Engineers Without Borders — University of Exeter (2017–2018)</li>
-    </ul>
-    <h4>Community</h4>
-    <ul>
-      <li>Reading Group Organiser — Centre for Water Systems, University of Exeter</li>
-      <li>Weekly Seminar Organiser — Urban Water Management Dept., Eawag</li>
-      <li>12+ oral presentations at international conferences; 7 poster presentations</li>
-    </ul>
-    <h4>Languages</h4>
-    <ul>
-      <li>English — Bilingual</li>
-      <li>Spanish — Native</li>
-      <li>French — B2</li>
-      <li>German — A1</li>
-    </ul>
-    <h4>Technical Skills</h4>
-    <div class="tags" style="margin-top:0.4rem">
-      <span class="tag">Python</span>
-      <span class="tag">PyTorch</span>
-      <span class="tag">Scikit-learn</span>
-      <span class="tag">Xarray · Pandas · NumPy</span>
-      <span class="tag">GeoPandas · Rasterio</span>
-      <span class="tag">QGIS · ArcGIS</span>
-      <span class="tag">Git</span>
-      <span class="tag">HPC  · SLURM </span>
-      <span class="tag">InfoWorks · SWMM · pySWMM</span>
-      <span class="tag">Linux · Mac · Windows</span>
-    </div>
-  </section>
+<footer class="site-footer">
+  &copy; Copyright 2026 May Rodriguez. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+  Last updated: <script>document.write(new Date(document.lastModified).toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'}))</script>.
+</footer>
 
-  <!-- BEYOND RESEARCH -->
-  <section id="hobbies">
-    <h3>Beyond Research</h3>
-    <p>When not at my desk, I'm usually outside in England's South West. I love <strong>Dartmoor</strong> — the tors and boggy paths suit me. I'm also working through the <strong>South West Coast Path</strong>, section by section.</p>
-    <p style="margin-top:1rem"><a href="walking.html" style="font-family:'Space Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;">See the map of what I've walked →</a></p>
-  </section>
-
-  <footer>
-    <script type="text/javascript">document.write("Last Modified: " + document.lastModified)</script>
-  </footer>
-
-</div>
 </body>
 </html>
